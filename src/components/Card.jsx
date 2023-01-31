@@ -26,18 +26,18 @@ export default function Card({ movie: { _id, title, year, duration, languaje, da
     return (
         <div ref={cardRef} className="card">
             <span>Titilo</span>
-            <span>Año</span>
-            <span>Duracion</span>
-            <span>Lenguage</span>
-            <span>Fecha</span>
-            <span>Pais</span>
-            <span>Administrar</span>
             <p>{title}</p>
+            <span>Año</span>
             <p>{year}</p>
+            <span>Duracion</span>
             <p>{duration}</p>
+            <span>Lenguage</span>
             <p>{languaje}</p>
+            <span>Fecha</span>
             <p>{date ?? "Vacio"}</p>
+            <span>Pais</span>
             <p>{country}</p>
+            <span>Administrar</span>
             <div className="btns">
                 {!edit ? <MdMode size={30} onClick={editHandler} /> :
                         <MdOutlineCheckCircleOutline size={30} onClick={finishHandler} />}

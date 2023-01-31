@@ -4,19 +4,19 @@ const movieSchema = Schema(
   {
     title: {
       type: String,
-      require: true,
+      required: true,
     },
     year: {
       type: Number,
-      require: true,
+      required: true,
     },
     duration: {
       type: Number,
-      require: true,
+      required: true,
     },
     languaje: {
       type: String,
-      require: true,
+      required: true,
     },
     date: {
       type: String,
@@ -24,10 +24,10 @@ const movieSchema = Schema(
     },
     country: {
       type: String,
-      require: true,
+      required: true,
     },
   },
-  
+
   {
     versionKey: false,
   }

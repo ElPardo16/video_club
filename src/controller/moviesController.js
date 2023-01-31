@@ -11,6 +11,4 @@ export const saveMovie = async dataMovie => {
 export const deleteMovie = async id => await Movie.findByIdAndDelete(id)
 
 
-export const updateMovie = async (id,dataMovie) => {
-    return await Movie.findByIdAndUpdate(id, dataMovie, {new:true})
-}
+export const updateMovie = async (id,dataMovie) => await Movie.findByIdAndUpdate(id, dataMovie, {new:true})
