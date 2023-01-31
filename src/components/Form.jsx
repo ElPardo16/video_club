@@ -15,6 +15,24 @@ export default function Form() {
             [e.target.name]: e.target.value
         })
     }
+
+    const handleSubmit = async _ => {
+        try {
+            const res = await fetch('/api',{
+                method:'POST',
+                headers: {
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify(data)
+            }) 
+            const json = await res.json()
+            console.log(json);
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <div className="add">
             <input type="text" name="title" placeholder='Titulo' onChange={changueHandler} value={data.title} />
@@ -23,7 +41,7 @@ export default function Form() {
             <input type="text" name="languaje" placeholder='Lenguaje' onChange={changueHandler} value={data.languaje} />
             <input type="date" name="date" placeholder='Fecha' onChange={changueHandler} value={data.date} />
             <input type="text" name="country" placeholder='Pais' onChange={changueHandler} value={data.country} />
-            <button>Agregar</button>
+            <button onClick={handleSubmit}>Agregar</button>
         </div>
     )
 }
