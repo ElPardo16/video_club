@@ -27,9 +27,16 @@ export async function getServerSideProps() {
   try {
     const response = await fetch("http://127.0.0.1:3000/api")
     const json = await response.json()
+    const movies = json.map(movie => {
+      const date = movie.date && movie.date.replaceAll("-","/")
+      return {
+        ...movie,
+        date 
+      }
+    })
     return {
       props: {
-        listMovies: json
+        listMovies: movies
       }
     }
   } catch (error) {
