@@ -1,4 +1,4 @@
-# CRUD de Pelicula con Backend 
+## CRUD de Pelicula con Backend 
 
 
 Esta aplicación es una CRUD de peliculas que implementa un backend para leer, crear, modificar y eliminar las películas que tienen en su base de datos.
@@ -16,9 +16,8 @@ Las tecnologías que usamos para desarrollar el proyecto fueron:
 - Express - Servidor http
 - Netlify - Despliegue
 - Postman - Testeo de API rest 
-- Redux  - Librería para manejar el estado global 
 
-## Consumo de la API
+Consumo de la API
 
 Para realizar las peticiones GET, POST, DELETE, PUT, se creó un EndPoint <code>/api/ </code>, Además se hizo uso de la función fetch en combinación de una función propia de Next llamada <code>GetServerSideProps </code>, para generar un sitio estatico que tiene un mejor performance.
 
@@ -40,7 +39,7 @@ export async function getServerSideProps() {
   }
 }
 
-Metodo PUT
+ 
   const res = await fetch(`/api/${_id}`,{
                 method:'PUT',
                 headers: {
@@ -51,14 +50,14 @@ Metodo PUT
             const json = await res.json()
             console.log(json);
             
-            fun(await getData())
+   fun(await getData())
         } catch (error) {
             console.log(error);
         }
     }
     
-    Metodo DELETE
-    const deleteHandler = async _  =>  {
+    ## Metodo DELETE
+   const deleteHandler = async _  =>  {
         try {
             const res = await fetch(`/api/${_id}`, {
                 method: "DELETE"
@@ -71,7 +70,7 @@ Metodo PUT
         }
      }
      
-     ## MONGOOSE
+   ## MONGOOSE
 
 Usamos mongoose para el modelado de datos y para realizar las operaciones del CRUD.
 
