@@ -27,7 +27,7 @@ const movieSchema = Schema(
       require: true,
     },
   },
-
+  
   {
     versionKey: false,
   }
