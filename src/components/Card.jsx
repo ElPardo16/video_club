@@ -23,6 +23,21 @@ export default function Card({ movie: { _id, title, year, duration, languaje, da
     const finishHandler = _ => {
         editable(false)
     }
+
+    const deleteHandler = async _  =>  {
+        try {
+            const res = await fetch(`/api/${_id}`, {
+                method: "DELETE"
+            } )
+            const json = await res.json()
+            console.log(json)
+        } catch (error) {
+            console.log(error)
+        }
+        
+
+
+     }
     return (
         <div ref={cardRef} className="card">
             <span>Titilo</span>
@@ -41,7 +56,7 @@ export default function Card({ movie: { _id, title, year, duration, languaje, da
             <div className="btns">
                 {!edit ? <MdMode size={30} onClick={editHandler} /> :
                         <MdOutlineCheckCircleOutline size={30} onClick={finishHandler} />}
-                <MdOutlineDelete size={30} onClick={editHandler} />
+                <MdOutlineDelete size={30} onClick={deleteHandler} />
             </div>
         </div>
     )
