@@ -1,6 +1,6 @@
 import conn from "../../db/connection"
 import { getMovie, saveMovie } from "../../controller/moviesController"
-//maria models
+
 
 
 export default async function handler(req, res) {

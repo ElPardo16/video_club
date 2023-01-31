@@ -1,5 +1,5 @@
 import conn from "../../db/connection";
-import { updateMovie, deleteMovie } from "../../controller/movieController";
+import { updateMovie, deleteMovie } from "../../controller/moviesController";
 
 export default async function handler(req, res) {
   const { id } = req.query
