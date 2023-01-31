@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { useState } from 'react'
 import Card from '../components/Card'
 import Form from '../components/Form'
+import { getData } from '../utils/tools'
 
 
 export default function Home({ listMovies }) {
@@ -16,9 +17,9 @@ export default function Home({ listMovies }) {
       <header>Movie Club</header>
       <main>
         <h1>Peliculas</h1>
-        <Form/>
+        <Form fun={setMovies}/>
         <div className="table">
-          {moviesState.map(movie => <Card key={movie._id} movie={movie} />)}
+          {moviesState.map(movie => <Card key={movie._id} movie={movie} fun={setMovies} />)}
         </div>
       </main>
     </>
@@ -27,18 +28,11 @@ export default function Home({ listMovies }) {
 
 export async function getServerSideProps() {
   try {
-    const response = await fetch("http://127.0.0.1:3000/api")
-    const json = await response.json()
-    const movies = json.map(movie => {
-      const date = movie.date && movie.date.replaceAll("-","/")
-      return {
-        ...movie,
-        date 
-      }
-    })
+    const jsonMovies = await getData()
+
     return {
       props: {
-        listMovies: movies
+        listMovies: jsonMovies
       }
     }
   } catch (error) {

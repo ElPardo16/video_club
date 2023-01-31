@@ -1,6 +1,7 @@
 import { useState } from "react"
+import { getData } from "../utils/tools"
 
-export default function Form() {
+export default function Form({fun}) {
     const [data, setData] = useState({
         title: "",
         year: "",
@@ -27,7 +28,7 @@ export default function Form() {
             }) 
             const json = await res.json()
             console.log(json);
-
+            fun(await getData())
         } catch (error) {
             console.log(error);
         }

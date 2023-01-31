@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from 'react'
 import { MdMode, MdOutlineDelete, MdOutlineCheckCircleOutline } from 'react-icons/md'
-export default function Card({ movie: { _id, title, year, duration, languaje, date, country } }) {
+import { getData } from '../utils/tools'
+export default function Card({ movie: { _id, title, year, duration, languaje, date, country }, fun }) {
     const [edit, setEdit] = useState(false)
     const [paragraps, setParagraps] = useState()
     const cardRef = useRef(null)
@@ -41,6 +42,8 @@ export default function Card({ movie: { _id, title, year, duration, languaje, da
             })
             const json = await res.json()
             console.log(json);
+            
+            fun(await getData())
         } catch (error) {
             console.log(error);
         }
@@ -53,12 +56,10 @@ export default function Card({ movie: { _id, title, year, duration, languaje, da
             } )
             const json = await res.json()
             console.log(json)
+            fun(await getData())
         } catch (error) {
             console.log(error)
         }
-        
-
-
      }
     return (
         <div ref={cardRef} className="card">
