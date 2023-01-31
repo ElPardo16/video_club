@@ -1,9 +1,11 @@
 import Head from 'next/head'
+import { useState } from 'react'
 import Card from '../components/Card'
 import Form from '../components/Form'
 
 
 export default function Home({ listMovies }) {
+  const [moviesState, setMovies] = useState(listMovies)
   return (
     <>
       <Head>
@@ -16,7 +18,7 @@ export default function Home({ listMovies }) {
         <h1>Peliculas</h1>
         <Form/>
         <div className="table">
-          {listMovies.map(movie => <Card key={movie._id} movie={movie} />)}
+          {moviesState.map(movie => <Card key={movie._id} movie={movie} />)}
         </div>
       </main>
     </>
