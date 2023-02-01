@@ -21,26 +21,27 @@ Consumo de la API
 
 Para realizar las peticiones GET, POST, DELETE, PUT, se creó un EndPoint <code>/api/ </code>, Además se hizo uso de la función fetch en combinación de una función propia de Next llamada <code>GetServerSideProps </code>, para generar un sitio estatico que tiene un mejor performance.
 
-export async function getServerSideProps() {
-  try {
-    const json = await getData()
-    return {
-      props: {
-        listTask: json
+
+    export async function getServerSideProps() {
+      try {
+        const json = await getData()
+        return {
+          props: {
+            listTask: json
+          }
+        }
+      } catch (error) {
+        console.log(error)
+        return {
+          props: {
+            listTask: []
+          }
+        }
       }
     }
-  } catch (error) {
-    console.log(error)
-    return {
-      props: {
-        listTask: []
-      }
-    }
-  }
-}
 
  
-  const res = await fetch(`/api/${_id}`,{
+    const res = await fetch(`/api/${_id}`,{
                 method:'PUT',
                 headers: {
                     'Content-Type':'application/json'
@@ -50,64 +51,69 @@ export async function getServerSideProps() {
             const json = await res.json()
             console.log(json);
             
-   fun(await getData())
+            fun(await getData())
         } catch (error) {
             console.log(error);
         }
     }
     
-    ## Metodo DELETE
-   const deleteHandler = async _  =>  {
-        try {
-            const res = await fetch(`/api/${_id}`, {
-                method: "DELETE"
-            } )
-            const json = await res.json()
-            console.log(json)
-            fun(await getData())
-        } catch (error) {
-            console.log(error)
-        }
-     }
-     
-   ## MONGOOSE
+    
+ ## Metodo DELETE
+ 
+ 
+     const deleteHandler = async _  =>  {
+          try {
+              const res = await fetch(`/api/${_id}`, {
+                  method: "DELETE"
+              } )
+              const json = await res.json()
+              console.log(json)
+              fun(await getData())
+          } catch (error) {
+              console.log(error)
+          }
+       }
+
+
+## MONGOOSE
 
 Usamos mongoose para el modelado de datos y para realizar las operaciones del CRUD.
 
-const movieSchema = Schema(
-  {
-    title: {
-      type: String,
-      required: true,
-    },
-    year: {
-      type: Number,
-      required: true,
-    },
-    duration: {
-      type: Number,
-      required: true,
-    },
-    languaje: {
-      type: String,
-      required: true,
-    },
-    date: {
-      type: String,
-      default: null,
-    },
-    country: {
-      type: String,
-      required: true,
-    },
-  },
+    const movieSchema = Schema(
+      {
+        title: {
+          type: String,
+          required: true,
+        },
+        year: {
+          type: Number,
+          required: true,
+        },
+        duration: {
+          type: Number,
+          required: true,
+        },
+        languaje: {
+          type: String,
+          required: true,
+        },
+        date: {
+          type: String,
+          default: null,
+        },
+        country: {
+          type: String,
+          required: true,
+        },
+      },
 
-  {
-    versionKey: false,
-  }
-);
+      {
+        versionKey: false,
+      }
+    );
 
 Ejemplo de como obtenemos los datos de nuestra Data base: 
 
- Movie.find()
+
+    Movie.find()
 
